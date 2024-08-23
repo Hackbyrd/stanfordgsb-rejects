@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSB Rejects</title>
+    <script type="text/javascript">
+        function startCountdown() {
+            let countdown = 5; // Start at 5 seconds
+            let milliseconds = 0; // Start at 0 milliseconds
+            const countdownElement = document.getElementById("countdown");
+
+            const interval = setInterval(function() {
+                if (milliseconds === 0) {
+                    countdownElement.textContent = `Redirecting you in ${countdown}.0 ms...`;
+                } else {
+                    countdownElement.textContent = `Redirecting you in ${countdown}.${milliseconds < 100 ? milliseconds.toString() : milliseconds} ms...`;
+                }
+
+                milliseconds -= 1;
+
+                if (milliseconds < 0) {
+                    milliseconds = 9;
+                    countdown--;
+                }
+
+                if (countdown < 0) {
+                    clearInterval(interval);
+                    window.location.href = "https://www.hbs.edu"; // Change this to your target URL
+                }
+            }, 100); // Update every 100 milliseconds
+        }
+    </script>
+</head>
+<body onload="startCountdown()">
+    <br/><br/>
+    <center><h2 style="color: #8C1515;">Welcome!<br/><br/>Stanford Graduate School of Business Rejects<br/>(gsbrejects.com)</h2></center>
+    <br/>
+    <center><h2 id="countdown" style="color: #4D4F53">Redirecting you in 5.0 ms...</h2></center>
+</body>
+</html>
